@@ -5,7 +5,7 @@
  */
 package view;
 
-import view.controle.UsuariosControle;
+import controle.UsuariosControle;
 
 /**
  *
