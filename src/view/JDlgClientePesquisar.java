@@ -5,8 +5,6 @@
  */
 package view;
 
-import bean.Cliente;
-import dao.ClienteDAO;
 import java.util.List;
 import view.controle.ClienteControle;
 
@@ -21,17 +19,12 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
      */
     private JDlgCliente JDlgCliente;
     ClienteControle clienteControle;
-    
+
     public JDlgClientePesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        clienteControle = new ClienteControle();
-        ClienteDAO clienteDAO = new ClienteDAO();
-        List lista = clienteDAO.listAll();
-        clienteControle.setList(lista);
-        
-        jTable1.setModel(clienteControle);
+
     }
 
     /**
@@ -105,20 +98,17 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
 
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
-//          int rowSel = jTable1.getSelectedRow();
-//        Cliente cliente= clienteControle.getBean(rowSel);
-//        JDlgCliente.beanView(cliente);
-//        setVisible(false);
- int rowSel = jTable1.getSelectedRow();
-        JDlgCliente.cliente = clienteControle.getBean(rowSel);
-        JDlgCliente.beanView(JDlgCliente.cliente);
-        
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel == -1) {
+
+        };
+
         setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-         setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

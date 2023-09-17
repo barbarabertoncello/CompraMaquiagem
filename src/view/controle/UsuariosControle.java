@@ -5,7 +5,7 @@
  */
 package view.controle;
 
-import bean.Usuarios;
+import bean.UsuarioBbd;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,8 +19,8 @@ public class UsuariosControle extends AbstractTableModel {
    public void setList(List lista) {
      this.lista = lista;
    }
-   public Usuarios getBean(int linha) {
-        return (Usuarios) lista.get(linha);
+   public UsuarioBbd getBean(int linha) {
+        return (UsuarioBbd) lista.get(linha);
     }
    
     @Override
@@ -36,18 +36,18 @@ public class UsuariosControle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Usuarios usuarios =(Usuarios) lista.get(rowIndex);
+        UsuarioBbd UsuarioBbd =(UsuarioBbd) lista.get(rowIndex);
         if(columnIndex == 0) {
-            return usuarios.getIdUsuarios();
+            return UsuarioBbd.getIdusuarioBbd();
         }
         if(columnIndex == 1) {
-            return usuarios.getNome();
+            return UsuarioBbd.getNomeBbd();
         }
         if(columnIndex == 2) {
-            return usuarios.getApelido();
+            return UsuarioBbd.getApelidoBbd();
         }
         if(columnIndex == 3) {
-            return usuarios.getCpf();
+            return UsuarioBbd.getNivelBbd();
         }
         return "";
     }
@@ -63,7 +63,7 @@ public class UsuariosControle extends AbstractTableModel {
             return "APELIDO";
         }
         if(columnIndex == 3) {
-            return "CPF";
+            return "Nivel";
         }
         return "";
     }

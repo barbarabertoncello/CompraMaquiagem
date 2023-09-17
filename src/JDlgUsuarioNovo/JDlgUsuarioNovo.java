@@ -6,29 +6,22 @@
 package JDlgUsuarioNovo;
 
 import tools.Util;
-import view.JDlgUsuariosNovoIA;
-import view.UsuariosController;
 
 /**
  *
- * @author u04863235100
+ * @author ""
  */
-public class JDlgUsuarioNovo extends javax.swing.JDialog {
+public class JDlgUsuarioNovo extends javax.swing.JFrame {
 
     /**
-     * Creates new form java
+     * Creates new form JDlgUsuarioNovo
      */
-     private JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
-    
-    public JDlgUsuarioNovo(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    JDlgUsuariosNovoIA jDlgUsuariosNovoIA;
+
+    public JDlgUsuarioNovo() {
         initComponents();
-        setTitle("Cadastro de usuários");
         setLocationRelativeTo(null);
         jDlgUsuariosNovoIA = new JDlgUsuariosNovoIA(null, true, false);
-        UsuariosController usuariosController = new UsuariosController();
-        jTable1.setModel(usuariosController);
-        
     }
 
     /**
@@ -47,7 +40,7 @@ public class JDlgUsuarioNovo extends javax.swing.JDialog {
         jBtnAlterar = new javax.swing.JButton();
         jbtnExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -114,13 +107,13 @@ public class JDlgUsuarioNovo extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
             .addComponent(jBtnExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -136,18 +129,16 @@ public class JDlgUsuarioNovo extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-         setTitle("Alterar");
-         jDlgUsuariosNovoIA.setVisible(true);
-        
-        
+        setTitle("Alterar");
+        jDlgUsuariosNovoIA.setVisible(true);
+
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
         // TODO add your handling code here:
-        if(Util.perguntar("Deseja Excluir o regritro?")==true){
-            
+        if (Util.perguntar("Deseja Excluir o regritro?") == true) {
+
         }
-        
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     /**
@@ -167,27 +158,21 @@ public class JDlgUsuarioNovo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(java.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(java.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(java.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(java.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuarioNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgUsuarioNovo dialog = new JDlgUsuarioNovo(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new JDlgUsuarioNovo().setVisible(true);
             }
         });
     }

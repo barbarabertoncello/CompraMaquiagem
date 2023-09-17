@@ -41,7 +41,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuUsuarios = new javax.swing.JMenuItem();
         jMnuClientes = new javax.swing.JMenuItem();
         jMnuProduto = new javax.swing.JMenuItem();
-        jMnuFuncionario = new javax.swing.JMenuItem();
         jMnuFornecedor = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMnuSair = new javax.swing.JMenuItem();
@@ -92,16 +91,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMnuProduto);
-
-        jMnuFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMnuFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pessoas-carregam-caixa.png"))); // NOI18N
-        jMnuFuncionario.setText("Funcionario");
-        jMnuFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnuFuncionarioActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMnuFuncionario);
 
         jMnuFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.SHIFT_MASK));
         jMnuFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/elevador.png"))); // NOI18N
@@ -204,12 +193,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgCompraProduto .setVisible(true);
     }//GEN-LAST:event_jMnuCompra_ProdutoActionPerformed
 
-    private void jMnuFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFuncionarioActionPerformed
-        // TODO add your handling code here:
-           JDlgFuncionario JDlgFuncionario  = new JDlgFuncionario (this, true);
-        JDlgFuncionario.setVisible(true);
-    }//GEN-LAST:event_jMnuFuncionarioActionPerformed
-
     private void jMnuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFornecedorActionPerformed
         // TODO add your handling code here:
        JDlgFornecedor JDlgFornecedor   = new JDlgFornecedor (this, true);
@@ -264,7 +247,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnuCompra_Produto;
     private javax.swing.JMenuItem jMnuCompras;
     private javax.swing.JMenuItem jMnuFornecedor;
-    private javax.swing.JMenuItem jMnuFuncionario;
     private javax.swing.JMenuItem jMnuProduto;
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;

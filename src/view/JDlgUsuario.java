@@ -1,13 +1,10 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package view;
 
-import static java.awt.Frame.MAXIMIZED_BOTH;
-import bean.Usuarios;
-import dao.UsuariosDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,127 +12,73 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
-import view.JDlgUsuarioPesquisar;
 import tools.Util;
+
 /**
  *
  * @author u07679183120
  */
 public class JDlgUsuario extends javax.swing.JDialog {
-    Usuarios usuarios;
-     Boolean incluindo;
-     MaskFormatter mascaraCpf;
-     MaskFormatter   mascaraData;
+
+    Boolean incluindo;
+    MaskFormatter mascaraCpf;
+    MaskFormatter mascaraData;
+
     /**
      * Creates new form JDlgUsuario
      */
-    public JDlgUsuario(java.awt.Frame parent, boolean modal ) {
+    public JDlgUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-          setTitle("Cadastro de Usuário");
-          setLocationRelativeTo(null);
-       
+        setTitle("Cadastro de Usuário");
+        setLocationRelativeTo(null);
 
-         try {
-             mascaraCpf = new MaskFormatter("###.###.###-##");
-         } catch (ParseException ex) {
-             Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-         try {
-             mascaraData = new MaskFormatter("##/##/####");
-         } catch (ParseException ex) {
-             Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-         }
-          jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
-         
-                 
+        try {
+            mascaraCpf = new MaskFormatter("###.###.###-##");
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+        try {
+            mascaraData = new MaskFormatter("##/##/####");
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
+
     }
-         
-    
-         
-    
-   public void habilitar(boolean valor){
-    jTxtNome.setEnabled(valor);
+
+    public void habilitar(boolean valor) {
+        jTxtNome.setEnabled(valor);
         jTxtApelido.setEnabled(valor);
         jFmtCpf.setEnabled(valor);
         jFmtDataNascimento.setEnabled(valor);
         jPwfSenha.setEnabled(valor);;
-    jCboNivel.setEnabled(valor);
-    jChbAtivo.setEnabled(valor);
-    jTxtCodigo.setEnabled(valor);
-    
-    jBtnConfirmar.setEnabled(valor);
-    jBtnCancelar.setEnabled(valor);
-    
-   jBtnIncluir.setEnabled(!valor);
-   jBtnAlterar.setEnabled(!valor);
-   jBtnExcluir.setEnabled(!valor);
-   jBtnPesquisar.setEnabled(!valor);
-   
-}
- 
-   public void limparCampo(){
+        jCboNivel.setEnabled(valor);
+        jChbAtivo.setEnabled(valor);
+        jTxtCodigo.setEnabled(valor);
+
+        jBtnConfirmar.setEnabled(valor);
+        jBtnCancelar.setEnabled(valor);
+
+        jBtnIncluir.setEnabled(!valor);
+        jBtnAlterar.setEnabled(!valor);
+        jBtnExcluir.setEnabled(!valor);
+        jBtnPesquisar.setEnabled(!valor);
+
+    }
+
+    public void limparCampo() {
         jTxtNome.setText(null);
         jTxtApelido.setText(null);
         jFmtCpf.setText(null);
         jFmtDataNascimento.setText(null);
-       jPwfSenha.setText(null);
-       jCboNivel.setSelectedIndex(-1);
-       jChbAtivo.setSelected(false);
-       jTxtCodigo.setText(null);
-   }
-   public Usuarios viewBean(){
-     //Usuarios usuarios = new Usuarios();
-     int id = Integer.valueOf( jTxtCodigo.getText());
-     usuarios.setIdUsuarios( id );
-     usuarios.setNome( jTxtNome.getText());
-     usuarios.setApelido( jTxtApelido.getText());
-     usuarios.setCpf( jFmtCpf.getText());
-     
-    
-//     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data 
-//     try{
-//         
-//         
-//         usuarios.setDataNascimento(formato.parse( jFmtDataNascimento.getText() ));
-//         
-//         
-//     }catch (ParseException ex){
-//         Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-//     };
-     
+        jPwfSenha.setText(null);
+        jCboNivel.setSelectedIndex(-1);
+        jChbAtivo.setSelected(false);
+        jTxtCodigo.setText(null);
+    }
 
-     usuarios.setSenha( jPwfSenha.getText());
-     usuarios.setNivel( jCboNivel.getSelectedIndex());
-     if(jChbAtivo.isSelected()== true) {
-         usuarios.setAtivo("S");
-     }else {
-         usuarios.setAtivo("N");
-     }
-        return usuarios;
-
-}
-   public void beanView(Usuarios usuarios) {
-       String cad = String.valueOf(usuarios.getIdUsuarios());
-       jTxtCodigo.setText(cad);
-       jTxtNome.setText( usuarios.getNome());
-       jTxtApelido.setText( usuarios.getApelido());
-       jFmtCpf.setText( usuarios.getCpf());
-       jPwfSenha.setText( usuarios.getSenha());
-       
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data   
-       jFmtDataNascimento.setText( formato.format(usuarios.getDataNascimento()));
-//data
-       jCboNivel.setSelectedIndex( usuarios.getNivel());
-       if (usuarios.getAtivo().equals("S") == true) { 
-           jChbAtivo.setSelected(true);
-       }else {
-           jChbAtivo.setSelected(false);
-       }
-   }
-   
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -394,50 +337,22 @@ public class JDlgUsuario extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-            Usuarios usuarios = viewBean();
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
-            usuariosDAO.delete(usuarios);
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
+        if(Util.perguntar("Quer apagar?")){
             Util.mensagem("Exclusão Efetuada");
         }
-   
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        // TODO add your handling code here:
-    
-           Usuarios usuarios = viewBean();       
-     UsuariosDAO usuariosDAO = new UsuariosDAO();
-     
-    if (incluindo == true){
-      
-         usuariosDAO.insert(usuarios);
-    }else{
-      
-        usuariosDAO.update(usuarios);
-    }
-   
-     //desabilitar();
-        
-   
+ 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        // TODO add your handling code here:
-      //String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
-       // UsuariosDAO usuariosDAO = new UsuariosDAO();
-       // int id = Integer.valueOf(resp);
-        //Usuarios usuarios =(Usuarios) usuariosDAO.list( id );
-       // beanView(usuarios);
-       
-            JDlgUsuarioPesquisar  jDlgUsuarioPesquisar  = new JDlgUsuarioPesquisar(null, true);
+      
+
+        JDlgUsuarioPesquisar jDlgUsuarioPesquisar = new JDlgUsuarioPesquisar(null, true);
         jDlgUsuarioPesquisar.setVisible(true);
-        
+
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -452,7 +367,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         //habilitar();
         limparCampo();
         incluindo = true;
-       
+
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jChbAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChbAtivoActionPerformed

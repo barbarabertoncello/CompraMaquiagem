@@ -5,22 +5,22 @@
  */
 package view;
 
-import bean.Fornecedor;
-import dao.FornecedorDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+
 /**
  *
  * @author u07329163139
  */
 public class JDlgFornecedor extends javax.swing.JDialog {
-Boolean incluindo;
-MaskFormatter mascaraCpf;
-    
+
+    Boolean incluindo;
+    MaskFormatter mascaraCpf;
+
     public JDlgFornecedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -28,85 +28,56 @@ MaskFormatter mascaraCpf;
         setLocationRelativeTo(null);
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
-           
+
         } catch (ParseException ex) {
             Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-                
-                
+
         desabilitar();
     }
-    
-    public void habilitar(){
-    jFmtRg.setEnabled(true);
-    jFmtCpf.setEnabled(true);
-    jTxtCodigoFornecedor.setEnabled(true);
-    jTxtNome.setEnabled(true);
-    jTxtEmail.setEnabled(true);
-  
-    
-    //botoes
-    jBtnCancelar.setEnabled(true);
-    jBtnConfirmar.setEnabled(true);
-    jBtnAlterar.setEnabled(false);
-    jBtnExcluir.setEnabled(false);
-    jBtnIncluir.setEnabled(false);
-    jBtnPesquisar.setEnabled(false);
-}
-    public void desabilitar(){
-    jFmtRg.setEnabled(false);
-    jFmtCpf.setEnabled(false);
-    jTxtCodigoFornecedor.setEnabled(false);
-    jTxtNome.setEnabled(false);
-   jTxtEmail.setEnabled(false);
-    
-    //botoes
-    jBtnConfirmar.setEnabled(false);
-    jBtnCancelar.setEnabled(false);
-    jBtnAlterar.setEnabled(true);
-    jBtnExcluir.setEnabled(true);
-    jBtnIncluir.setEnabled(true);
-    jBtnPesquisar.setEnabled(true);
-}
-    
-    
-    
-    public void LimparCampos(){
-        
+
+    public void habilitar() {
+        jFmtRg.setEnabled(true);
+        jFmtCpf.setEnabled(true);
+        jTxtCodigoFornecedor.setEnabled(true);
+        jTxtNome.setEnabled(true);
+        jTxtEmail.setEnabled(true);
+
+        //botoes
+        jBtnCancelar.setEnabled(true);
+        jBtnConfirmar.setEnabled(true);
+        jBtnAlterar.setEnabled(false);
+        jBtnExcluir.setEnabled(false);
+        jBtnIncluir.setEnabled(false);
+        jBtnPesquisar.setEnabled(false);
+    }
+
+    public void desabilitar() {
+        jFmtRg.setEnabled(false);
+        jFmtCpf.setEnabled(false);
+        jTxtCodigoFornecedor.setEnabled(false);
+        jTxtNome.setEnabled(false);
+        jTxtEmail.setEnabled(false);
+
+        //botoes
+        jBtnConfirmar.setEnabled(false);
+        jBtnCancelar.setEnabled(false);
+        jBtnAlterar.setEnabled(true);
+        jBtnExcluir.setEnabled(true);
+        jBtnIncluir.setEnabled(true);
+        jBtnPesquisar.setEnabled(true);
+    }
+
+    public void LimparCampos() {
+
         jTxtCodigoFornecedor.setText("");
         jTxtNome.setText("");
         jFmtRg.setText("");
         jFmtCpf.setText("");
-       jTxtEmail.setText("");
-       
+        jTxtEmail.setText("");
+
     }
-    public Fornecedor viewBean(){
-   Fornecedor fornecedor = new Fornecedor();
-     int id = Integer.valueOf( jTxtCodigoFornecedor.getText());
-      fornecedor.setId_fornecedor( id );
-      fornecedor.setNome( jTxtNome.getText());
-      
-      fornecedor.setCpf( jFmtCpf.getText());
-      fornecedor.setRg( jFmtRg.getText());
-     fornecedor.setEmail( jTxtEmail.getText());
-
-     
-    
-        return fornecedor;
-
-}
-   public void beanView(Fornecedor fornecedor) {
-       String cad = String.valueOf(fornecedor.getId_fornecedor());
-       jTxtCodigoFornecedor.setText(cad);
-       jTxtNome.setText( fornecedor.getNome());
-       jFmtCpf.setText( fornecedor.getCpf());
-       jFmtRg.setText( fornecedor.getRg());
-       jTxtEmail.setText( fornecedor.getEmail());
-       
-   }
-
-       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -291,27 +262,12 @@ MaskFormatter mascaraCpf;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtNomeActionPerformed
 
-    
-    
-    
-    
     //BOTOES EVENTOS
-    
+
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-            Fornecedor fornecedor = viewBean();
-            FornecedorDAO fornecedorDAO = new FornecedorDAO();
-            fornecedorDAO.delete(fornecedor);
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
-        }
-   
-        
+
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -323,24 +279,14 @@ MaskFormatter mascaraCpf;
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-     habilitar();
+        habilitar();
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-       // TODO add your handling code here:
-        Fornecedor fornecedor = viewBean();       
-     FornecedorDAO fornecedorDAO = new FornecedorDAO();
-     
-    if (incluindo == true){
-      
-         fornecedorDAO.insert(fornecedor);
-    }else{
-      
-        fornecedorDAO.update(fornecedor);
-    }
-   
-     desabilitar();
+        // TODO add your handling code here:
+
+        desabilitar();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -352,12 +298,8 @@ MaskFormatter mascaraCpf;
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-         String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
-        int id = Integer.valueOf(resp);
-        Fornecedor fornecedor =(Fornecedor) fornecedorDAO.list( id );
-        beanView(fornecedor);
-       
+
+
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     /**

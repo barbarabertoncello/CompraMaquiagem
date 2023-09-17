@@ -5,7 +5,7 @@
  */
 package view.controle;
 
-import bean.Cliente;
+import bean.ClienteBbd;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,8 +19,8 @@ public class ClienteControle extends AbstractTableModel {
    public void setList(List lista) {
      this.lista = lista;
    }
-   public Cliente getBean(int linha) {
-        return (Cliente) lista.get(linha);
+   public ClienteBbd getBean(int linha) {
+        return (ClienteBbd) lista.get(linha);
     }
    
     @Override
@@ -36,18 +36,18 @@ public class ClienteControle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Cliente cliente =(Cliente) lista.get(rowIndex);
+        ClienteBbd ClienteBbd =(ClienteBbd) lista.get(rowIndex);
         if(columnIndex == 0) {
-            return cliente.getId_cliente();
+            return ClienteBbd.getIdclienteBbd();
         }
         if(columnIndex == 1) {
-            return cliente.getNome();
+            return ClienteBbd.getNomeBbd();
         }
         if(columnIndex == 2) {
-            return cliente.getRg();
+            return ClienteBbd.getTelefoneBbd();
         }
         if(columnIndex == 3) {
-            return cliente.getCpf();
+            return ClienteBbd.getEndereco();
         }
         return "";
     }
@@ -60,10 +60,10 @@ public class ClienteControle extends AbstractTableModel {
             return "NOME";
         }
         if(columnIndex == 2) {
-            return "RG";
+            return "Telefone";
         }
         if(columnIndex == 3) {
-            return "CPF";
+            return "Endereço";
         }
         return "";
     }

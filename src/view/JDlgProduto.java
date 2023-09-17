@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import bean.Produto;
-import dao.ProdutoDAO;
+
 import javax.swing.JOptionPane;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.text.ParseException;
@@ -15,112 +14,77 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+
 /**
-/**
+ * /**
  *
  * @author u07392163139
  */
 public class JDlgProduto extends javax.swing.JDialog {
-  Boolean incluindo;
+
+    Boolean incluindo;
+
     /**
      * Creates new form JDlgUsuario
      */
     public JDlgProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-          setTitle("Produto");
-          setLocationRelativeTo(null);
-          desabilitar();
+        setTitle("Produto");
+        setLocationRelativeTo(null);
+        desabilitar();
     }
-    
-   public void habilitar(){
-    jTxtCodigoProduto.setEnabled(true);
-    jTxtNome.setEnabled(true);
-    jTxtQuantidade.setEnabled(true);
-    jTxtDescricao.setEnabled(true);
-   
-     jTxtGenero.setEnabled(true);
-    
-    
-   
-    jTxtPreco.setEnabled(true);
 
+    public void habilitar() {
+        jTxtCodigoProduto.setEnabled(true);
+        jTxtNome.setEnabled(true);
+        jTxtQuantidade.setEnabled(true);
+        jTxtDescricao.setEnabled(true);
 
-    
-    jBtnConfirmar.setEnabled(true);
-    jBtnCancelar.setEnabled(true);
-    
-   jBtnIncluir.setEnabled(false);
-   jBtnAlterar.setEnabled(false);
-   jBtnExcluir.setEnabled(false);
-   jBtnPesquisar.setEnabled(false);
-   
-}
-   public void desabilitar(){
-    jTxtCodigoProduto.setEnabled(false);
-    jTxtNome.setEnabled(false);
-    jTxtQuantidade.setEnabled(false);
-    jTxtDescricao.setEnabled(false);
-    
-    
-    jTxtGenero.setEnabled(false);
-    
-    jTxtPreco.setEnabled(false);
-   
-        
-       jBtnConfirmar.setEnabled(false);
-       jBtnCancelar.setEnabled(false);
-       
+        jTxtGenero.setEnabled(true);
+
+        jTxtPreco.setEnabled(true);
+
+        jBtnConfirmar.setEnabled(true);
+        jBtnCancelar.setEnabled(true);
+
+        jBtnIncluir.setEnabled(false);
+        jBtnAlterar.setEnabled(false);
+        jBtnExcluir.setEnabled(false);
+        jBtnPesquisar.setEnabled(false);
+
+    }
+
+    public void desabilitar() {
+        jTxtCodigoProduto.setEnabled(false);
+        jTxtNome.setEnabled(false);
+        jTxtQuantidade.setEnabled(false);
+        jTxtDescricao.setEnabled(false);
+
+        jTxtGenero.setEnabled(false);
+
+        jTxtPreco.setEnabled(false);
+
+        jBtnConfirmar.setEnabled(false);
+        jBtnCancelar.setEnabled(false);
+
         jBtnIncluir.setEnabled(true);
         jBtnAlterar.setEnabled(true);
         jBtnExcluir.setEnabled(true);
         jBtnPesquisar.setEnabled(true);
     }
-    
-   public void limparCampo(){ 
-    jTxtCodigoProduto.setText(null);
-    jTxtNome.setText(null);
-    jTxtQuantidade.setText(null);
-    jTxtDescricao.setText(null);
-    jTxtGenero.setText(null);
-    
-    
-   
-    
-    jTxtPreco.setText(null);
-  
-   }
-   
-     public Produto viewBean(){
-   Produto produto = new Produto();
-     int id = Integer.valueOf( jTxtCodigoProduto.getText());
-     produto.setId_produto( id );
-     produto.setNome( jTxtNome.getText());
-     produto.setQuantidade( jTxtQuantidade.getText());
-     produto.setDescricao( jTxtDescricao.getText());
-   
-     produto.setGenero(jTxtGenero .getText());
-     produto.setPreço( jTxtPreco.getText());
-   
-     return produto; 
 
-}
-   public void beanView(Produto produto) {
-       String cad = String.valueOf(produto.getId_produto());
-       jTxtCodigoProduto.setText(cad);
-       jTxtNome.setText( produto.getNome());
-       jTxtQuantidade.setText( produto.getQuantidade());
-       jTxtDescricao.setText( produto.getDescricao());
-       jTxtGenero.setText( produto.getGenero());
-       jTxtPreco.setText( produto.getPreço());
-       
-       //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data   
-     //  jFmtDataNascimento.setText( formato.format(usuarios.getDataNascimento()));
-//data
-     
-   }
-   
-   
+    public void limparCampo() {
+        jTxtCodigoProduto.setText(null);
+        jTxtNome.setText(null);
+        jTxtQuantidade.setText(null);
+        jTxtDescricao.setText(null);
+        jTxtGenero.setText(null);
+
+        jTxtPreco.setText(null);
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -334,48 +298,19 @@ public class JDlgProduto extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-   int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-            Produto produto = viewBean();
-            ProdutoDAO ProdutoDAO = new ProdutoDAO();
-            ProdutoDAO.delete(produto);
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
-        }
-        
-        
+
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        
-           Produto produto = viewBean();       
-     ProdutoDAO produtoDAO = new ProdutoDAO();
-     
-    if (incluindo == true){
-      
-         produtoDAO.insert(produto);
-    }else{
-      
-        produtoDAO.update(produto);
-    }
-     desabilitar();
-     
-     
+
+        desabilitar();
+
+
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        // TODO add your handling code here:
-//        String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
-//        ProdutoDAO produtoDAO = new ProdutoDAO();
-//        int id = Integer.valueOf(resp);
-//        Produto produto =(Produto) produtoDAO.list( id );
-//        beanView(produto);
-      JDlgProdutoPesquisar jDlgProdutoPesquisar = new JDlgProdutoPesquisar(null, true);
-      jDlgProdutoPesquisar.setVisible(true);
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

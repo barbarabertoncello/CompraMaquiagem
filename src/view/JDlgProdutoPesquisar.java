@@ -5,8 +5,6 @@
  */
 package view;
 
-import bean.Produto;
-import dao.ProdutoDAO;
 import java.util.List;
 import view.controle.ProdutoControle;
 
@@ -27,12 +25,7 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        produtoControle = new ProdutoControle();
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        List lista = produtoDAO.listAll();
-        produtoControle.setList(lista);
-        
-        jTable1.setModel(produtoControle);
+      
     }
 
     /**
@@ -115,8 +108,9 @@ public class JDlgProdutoPesquisar extends javax.swing.JDialog {
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        Produto produto = produtoControle.getBean(rowSel);
-        JDlgProduto.beanView(produto);
+       if(rowSel==-1){
+           
+       }
         setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 

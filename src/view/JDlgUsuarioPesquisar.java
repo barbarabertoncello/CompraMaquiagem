@@ -5,9 +5,6 @@
  */
 package view;
 
-import bean.Usuarios;
-import dao.UsuariosDAO;
-import java.util.List;
 import view.controle.UsuariosControle;
 
 /**
@@ -21,17 +18,11 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
      */
     private JDlgUsuario JDlgUsuario;
     UsuariosControle usuarioControle;
-    
+
     public JDlgUsuarioPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        usuarioControle = new UsuariosControle();
-        UsuariosDAO usuarioDAO = new UsuariosDAO();
-        List lista = usuarioDAO.listAll();
-        usuarioControle.setList(lista);
-        
-        jTable1.setModel(usuarioControle);
     }
 
     /**
@@ -106,8 +97,7 @@ public class JDlgUsuarioPesquisar extends javax.swing.JDialog {
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        Usuarios usuarios = usuarioControle.getBean(rowSel);
-        JDlgUsuario.beanView(usuarios);
+
         setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 

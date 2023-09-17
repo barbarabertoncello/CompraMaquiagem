@@ -5,7 +5,7 @@
  */
 package view.controle;
 
-import bean.Produto;
+import bean.ProdutoBbd;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,8 +19,8 @@ public class ProdutoControle extends AbstractTableModel {
    public void setList(List lista) {
      this.lista = lista;
    }
-   public Produto getBean(int linha) {
-        return (Produto) lista.get(linha);
+   public ProdutoBbd getBean(int linha) {
+        return (ProdutoBbd) lista.get(linha);
     }
    
     @Override
@@ -36,18 +36,18 @@ public class ProdutoControle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Produto produto =(Produto) lista.get(rowIndex);
+        ProdutoBbd ProdutoBbd =(ProdutoBbd) lista.get(rowIndex);
         if(columnIndex == 0) {
-            return produto.getId_produto();
+            return ProdutoBbd.getIdprodutoBbd();
         }
         if(columnIndex == 1) {
-            return produto.getNome();
+            return ProdutoBbd.getNomeBbd();
         }
         if(columnIndex == 2) {
-            return produto.getQuantidade();
+            return ProdutoBbd.getQuantidadeUnitariaBbd();
         }
         if(columnIndex == 3) {
-            return produto.getDescricao();
+            return ProdutoBbd.getValorBbd();
         }
         return "";
     }

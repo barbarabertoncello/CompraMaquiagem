@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import bean.Cliente;
-import dao.ClienteDAO;
+
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -19,93 +18,91 @@ import javax.swing.text.MaskFormatter;
  * @author u04863235100
  */
 public class JDlgCliente extends javax.swing.JDialog {
-boolean incluindo;
- MaskFormatter mascaraCpf;
- MaskFormatter   mascaraData;
- MaskFormatter   mascaraTelefone;
-  public Cliente cliente;
+
+    boolean incluindo;
+    MaskFormatter mascaraCpf;
+    MaskFormatter mascaraData;
+    MaskFormatter mascaraTelefone;
+
     /**
      * Creates new form JDlgUsuario
      */
     public JDlgCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-          setTitle("Cliente");
-          setLocationRelativeTo(null);
-          desabilitar();
-          try {
-                    mascaraData = new MaskFormatter("##/##/####");
-                    mascaraCpf = new MaskFormatter("###.###.###-##");
-                    mascaraTelefone = new MaskFormatter("(##)####-####");
-                    
+        setTitle("Cliente");
+        setLocationRelativeTo(null);
+        desabilitar();
+        try {
+            mascaraData = new MaskFormatter("##/##/####");
+            mascaraCpf = new MaskFormatter("###.###.###-##");
+            mascaraTelefone = new MaskFormatter("(##)####-####");
+
         } catch (ParseException ex) {
             Logger.getLogger(JDlgCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-          jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
-          jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-          jFmtTelefone.setFormatterFactory(new DefaultFormatterFactory(mascaraTelefone));
-          
+        jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
+        jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+        jFmtTelefone.setFormatterFactory(new DefaultFormatterFactory(mascaraTelefone));
+
     }
-    
-   public void habilitar(){
-     jTxtCodigoCliente.setEnabled(true);
-     jTxtNome.setEnabled(true);
-      jTxtApelido.setEnabled(true);
-      jTxtEndereco.setEnabled(true);
-      jTxtCep.setEnabled(true);
-      jFmtDataNascimento.setEnabled(true);
-      jTxtEmail.setEnabled(true);
-      jFmtTelefone.setEnabled(true);
-      jFmtCpf.setEnabled(true);
-      jFmtRg.setEnabled(true);
-      jTxtCidade.setEnabled(true);
-      jTxtComplemento.setEnabled(true);
-      jFmtAgenciaBancaria.setEnabled(true);
-      jFmtTipoContaBancaria.setEnabled(true);
-      jFmtNumeroContaBancaria.setEnabled(true);
-        
-  
-    
-    jBtnConfirmar.setEnabled(true);
-    jBtnCancelar.setEnabled(true);
-    
-   jBtnIncluir.setEnabled(false);
-   jBtnAlterar.setEnabled(false);
-   jBtnExcluir.setEnabled(false);
-   jBtnPesquisar.setEnabled(false);
-   
-}
-   public void desabilitar(){
-       
-      jTxtCodigoCliente.setEnabled(false);
-      jTxtNome.setEnabled(false);
-      jTxtApelido.setEnabled(false);
-      jTxtEndereco.setEnabled(false);
-      jTxtCep.setEnabled(false);
-      jFmtDataNascimento.setEnabled(false);
-      jTxtEmail.setEnabled(false);
-      jFmtTelefone.setEnabled(false);
-      jFmtCpf.setEnabled(false);
-      jFmtRg.setEnabled(false);
-      jTxtCidade.setEnabled(false);
-      jTxtComplemento.setEnabled(false);
-      jFmtAgenciaBancaria.setEnabled(false);
-      jFmtTipoContaBancaria.setEnabled(false);
-      jFmtNumeroContaBancaria.setEnabled(false);
-       
-  
-        
-       jBtnConfirmar.setEnabled(false);
-       jBtnCancelar.setEnabled(false);
-       
+
+    public void habilitar() {
+        jTxtCodigoCliente.setEnabled(true);
+        jTxtNome.setEnabled(true);
+        jTxtApelido.setEnabled(true);
+        jTxtEndereco.setEnabled(true);
+        jTxtCep.setEnabled(true);
+        jFmtDataNascimento.setEnabled(true);
+        jTxtEmail.setEnabled(true);
+        jFmtTelefone.setEnabled(true);
+        jFmtCpf.setEnabled(true);
+        jFmtRg.setEnabled(true);
+        jTxtCidade.setEnabled(true);
+        jTxtComplemento.setEnabled(true);
+        jFmtAgenciaBancaria.setEnabled(true);
+        jFmtTipoContaBancaria.setEnabled(true);
+        jFmtNumeroContaBancaria.setEnabled(true);
+
+        jBtnConfirmar.setEnabled(true);
+        jBtnCancelar.setEnabled(true);
+
+        jBtnIncluir.setEnabled(false);
+        jBtnAlterar.setEnabled(false);
+        jBtnExcluir.setEnabled(false);
+        jBtnPesquisar.setEnabled(false);
+
+    }
+
+    public void desabilitar() {
+
+        jTxtCodigoCliente.setEnabled(false);
+        jTxtNome.setEnabled(false);
+        jTxtApelido.setEnabled(false);
+        jTxtEndereco.setEnabled(false);
+        jTxtCep.setEnabled(false);
+        jFmtDataNascimento.setEnabled(false);
+        jTxtEmail.setEnabled(false);
+        jFmtTelefone.setEnabled(false);
+        jFmtCpf.setEnabled(false);
+        jFmtRg.setEnabled(false);
+        jTxtCidade.setEnabled(false);
+        jTxtComplemento.setEnabled(false);
+        jFmtAgenciaBancaria.setEnabled(false);
+        jFmtTipoContaBancaria.setEnabled(false);
+        jFmtNumeroContaBancaria.setEnabled(false);
+
+        jBtnConfirmar.setEnabled(false);
+        jBtnCancelar.setEnabled(false);
+
         jBtnIncluir.setEnabled(true);
         jBtnAlterar.setEnabled(true);
         jBtnExcluir.setEnabled(true);
         jBtnPesquisar.setEnabled(true);
     }
-    
-   public void limparCampo(){
-       
+
+    public void limparCampo() {
+
         jTxtCodigoCliente.setText(null);
         jTxtNome.setText(null);
         jTxtApelido.setText(null);
@@ -121,63 +118,9 @@ boolean incluindo;
         jTxtComplemento.setText(null);
         jFmtAgenciaBancaria.setText(null);
         jFmtNumeroContaBancaria.setText(null);
-          
-   }
-   public Cliente viewBean(){
-   Cliente cliente = new Cliente();
-     int id = Integer.valueOf( jTxtCodigoCliente.getText());
-     cliente.setId_cliente( id );
-     cliente.setNome( jTxtNome.getText());
-     cliente.setApelido( jTxtApelido.getText());
-     cliente.setEndereço( jTxtEndereco.getText());
-     cliente.setCep( jTxtCep.getText());
-     cliente.setCidade( jTxtCidade.getText());
-     cliente.setComplemento( jTxtComplemento.getText());
-     cliente.setTelefone( jFmtTelefone.getText());
-     cliente.setEmail( jTxtEmail.getText());
-     cliente.setCpf( jFmtCpf.getText());
-     cliente.setRg( jFmtRg.getText());
-     
-//     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //data 
-//     try{
-//         
-//         
-//         usuarios.setDataNascimento(formato.parse( jFmtDataNascimento.getText() ));
-//         
-//         
-//     }catch (ParseException ex){
-//         Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-//     };
-     
-   cliente.setTipoContaBancaria(jFmtTipoContaBancaria.getText());
-   cliente.setNumeroAgenciaBancaria(jFmtAgenciaBancaria.getText());
-   cliente.setNumeroContaBancaria(jFmtNumeroContaBancaria.getText());
-     
-        return cliente;
-   
-   }
-   
-   public void beanView(Cliente cliente) {
-       String cad = String.valueOf(cliente.getId_cliente());
-       jTxtCodigoCliente.setText(cad);
-       jTxtNome.setText( cliente.getNome());
-       jTxtApelido.setText(cliente.getApelido());
-       jTxtEndereco.setText(cliente.getEndereço());
-       jTxtCep.setText(cliente.getCep());
-       jTxtCidade.setText(cliente.getCidade());
-       jTxtComplemento.setText(cliente.getComplemento());
-       jFmtTelefone.setText(cliente.getTelefone());
-       jTxtEmail.setText(cliente.getEmail());
-       jFmtCpf.setText(cliente.getCpf());
-       jFmtRg.setText(cliente.getRg());
-       //jFmtDataNascimento.setText(cliente.getDataNascimento());
-       jFmtTipoContaBancaria.setText(cliente.getTipoContaBancaria());
-       jFmtAgenciaBancaria.setText(cliente.getNumeroAgenciaBancaria());
-       jFmtNumeroContaBancaria.setText(cliente.getNumeroContaBancaria());
-       
-       
-   }
-   
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -465,7 +408,7 @@ boolean incluindo;
                     .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -477,7 +420,7 @@ boolean incluindo;
                     .addComponent(jFmtAgenciaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFmtNumeroContaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFmtTipoContaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir)
                     .addComponent(jBtnAlterar)
@@ -500,52 +443,26 @@ boolean incluindo;
     }//GEN-LAST:event_jFmtDataNascimentoActionPerformed
 
     //BOTOES
-    
+
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        
+
         habilitar();
-        incluindo = false; 
+        incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-    int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão ?",
-                "Pergunta", JOptionPane.YES_NO_OPTION );
-                
-        if( resp == JOptionPane.YES_OPTION){
-            Cliente cliente = viewBean();
-            ClienteDAO clienteDAO = new ClienteDAO();
-            clienteDAO.delete(cliente);
-            JOptionPane.showMessageDialog(null, "Exclusão efetuada");
-        }else {
-            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
-        }
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-          Cliente cliente = viewBean();       
-     ClienteDAO clienteDAO = new ClienteDAO();
-     
-    if (incluindo == true){
-      
-         clienteDAO.insert(cliente);
-    }else{
-      
-        clienteDAO.update(cliente);
-    }
-   
-     desabilitar();
+
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        // TODO add your handling code here:
-//         String resp = JOptionPane.showInputDialog(null, "Entre com a chave primária");
-//        ClienteDAO clienteDAO = new ClienteDAO();
-//        int id = Integer.valueOf(resp);
-//        Cliente cliente =(Cliente) clienteDAO.list( id );
-//        beanView(cliente);
-JDlgClientePesquisar jDlgClientePesquisar = new JDlgClientePesquisar(null, true);
+
+        JDlgClientePesquisar jDlgClientePesquisar = new JDlgClientePesquisar(null, true);
         jDlgClientePesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
@@ -558,7 +475,7 @@ JDlgClientePesquisar jDlgClientePesquisar = new JDlgClientePesquisar(null, true)
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-      habilitar();
+        habilitar();
         limparCampo();
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
