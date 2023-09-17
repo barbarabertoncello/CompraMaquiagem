@@ -12,13 +12,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import tools.Util;
 
 /**
  *
  * @author u04863235100
  */
 public class JDlgCliente extends javax.swing.JDialog {
-
+    
     boolean incluindo;
     MaskFormatter mascaraCpf;
     MaskFormatter mascaraData;
@@ -32,93 +33,65 @@ public class JDlgCliente extends javax.swing.JDialog {
         initComponents();
         setTitle("Cliente");
         setLocationRelativeTo(null);
-        desabilitar();
+        habilitar(false);
         try {
             mascaraData = new MaskFormatter("##/##/####");
             mascaraCpf = new MaskFormatter("###.###.###-##");
             mascaraTelefone = new MaskFormatter("(##)####-####");
-
+            
         } catch (ParseException ex) {
             Logger.getLogger(JDlgCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
-        jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-        jFmtTelefone.setFormatterFactory(new DefaultFormatterFactory(mascaraTelefone));
-
+        jFmtDataNascimento_bbd.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
+        jFmtCpf_bbd.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+        jFmtTelefone_bbd.setFormatterFactory(new DefaultFormatterFactory(mascaraTelefone));
+        
     }
-
-    public void habilitar() {
-        jTxtCodigoCliente.setEnabled(true);
-        jTxtNome.setEnabled(true);
-        jTxtApelido.setEnabled(true);
-        jTxtEndereco.setEnabled(true);
-        jTxtCep.setEnabled(true);
-        jFmtDataNascimento.setEnabled(true);
-        jTxtEmail.setEnabled(true);
-        jFmtTelefone.setEnabled(true);
-        jFmtCpf.setEnabled(true);
-        jFmtRg.setEnabled(true);
-        jTxtCidade.setEnabled(true);
-        jTxtComplemento.setEnabled(true);
-        jFmtAgenciaBancaria.setEnabled(true);
-        jFmtTipoContaBancaria.setEnabled(true);
-        jFmtNumeroContaBancaria.setEnabled(true);
-
-        jBtnConfirmar.setEnabled(true);
-        jBtnCancelar.setEnabled(true);
-
-        jBtnIncluir.setEnabled(false);
-        jBtnAlterar.setEnabled(false);
-        jBtnExcluir.setEnabled(false);
-        jBtnPesquisar.setEnabled(false);
-
+    
+    public void habilitar(boolean valor) {
+        Util.habilitar(valor, jTxtCodigoCliente_bbd,
+                jTxtNome_bbd,
+                jTxtApelido_bbd,
+                jTxtEndereco_bbd,
+                jTxtCep_bbd,
+                jFmtDataNascimento_bbd,
+                jTxtEmail_bbd,
+                jFmtTelefone_bbd,
+                jFmtCpf_bbd,
+                jFmtRg_bbd,
+                jTxtCidade_bbd,
+                jTxtComplemento_bbd,
+                jFmtAgenciaBancaria_bbd,
+                jFmtTipoContaBancaria_bbd,
+                jFmtNumeroContaBancaria_bbd,
+                jBtnConfirmar_bbd,
+                jBtnCancelar_bbd);
+        
+        Util.habilitar(!valor, jBtnIncluir_bbd,
+                jBtnAlterar_bbd,
+                jBtnExcluir_bbd,
+                jBtnPesquisar_bbd);
+        
     }
-
-    public void desabilitar() {
-
-        jTxtCodigoCliente.setEnabled(false);
-        jTxtNome.setEnabled(false);
-        jTxtApelido.setEnabled(false);
-        jTxtEndereco.setEnabled(false);
-        jTxtCep.setEnabled(false);
-        jFmtDataNascimento.setEnabled(false);
-        jTxtEmail.setEnabled(false);
-        jFmtTelefone.setEnabled(false);
-        jFmtCpf.setEnabled(false);
-        jFmtRg.setEnabled(false);
-        jTxtCidade.setEnabled(false);
-        jTxtComplemento.setEnabled(false);
-        jFmtAgenciaBancaria.setEnabled(false);
-        jFmtTipoContaBancaria.setEnabled(false);
-        jFmtNumeroContaBancaria.setEnabled(false);
-
-        jBtnConfirmar.setEnabled(false);
-        jBtnCancelar.setEnabled(false);
-
-        jBtnIncluir.setEnabled(true);
-        jBtnAlterar.setEnabled(true);
-        jBtnExcluir.setEnabled(true);
-        jBtnPesquisar.setEnabled(true);
-    }
-
+    
     public void limparCampo() {
-
-        jTxtCodigoCliente.setText(null);
-        jTxtNome.setText(null);
-        jTxtApelido.setText(null);
-        jFmtCpf.setText(null);
-        jFmtRg.setText(null);
-        jFmtDataNascimento.setText(null);
-        jTxtEmail.setText(null);
-        jFmtTelefone.setText(null);
-        jFmtTipoContaBancaria.setText(null);
-        jTxtCep.setText(null);
-        jTxtEndereco.setText(null);
-        jTxtCidade.setText(null);
-        jTxtComplemento.setText(null);
-        jFmtAgenciaBancaria.setText(null);
-        jFmtNumeroContaBancaria.setText(null);
-
+        
+        Util.limparCampos(jTxtCodigoCliente_bbd,
+                jTxtNome_bbd,
+                jTxtApelido_bbd,
+                jTxtEndereco_bbd,
+                jTxtCep_bbd,
+                jFmtDataNascimento_bbd,
+                jTxtEmail_bbd,
+                jFmtTelefone_bbd,
+                jFmtCpf_bbd,
+                jFmtRg_bbd,
+                jTxtCidade_bbd,
+                jTxtComplemento_bbd,
+                jFmtAgenciaBancaria_bbd,
+                jFmtTipoContaBancaria_bbd,
+                jFmtNumeroContaBancaria_bbd);
+        
     }
 
     /**
@@ -131,42 +104,42 @@ public class JDlgCliente extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTxtNome = new javax.swing.JTextField();
+        jTxtNome_bbd = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFmtCpf = new javax.swing.JFormattedTextField();
-        jFmtDataNascimento = new javax.swing.JFormattedTextField();
-        jBtnIncluir = new javax.swing.JButton();
-        jBtnAlterar = new javax.swing.JButton();
-        jBtnExcluir = new javax.swing.JButton();
-        jBtnConfirmar = new javax.swing.JButton();
-        jBtnPesquisar = new javax.swing.JButton();
-        jBtnCancelar = new javax.swing.JButton();
+        jFmtCpf_bbd = new javax.swing.JFormattedTextField();
+        jFmtDataNascimento_bbd = new javax.swing.JFormattedTextField();
+        jBtnIncluir_bbd = new javax.swing.JButton();
+        jBtnAlterar_bbd = new javax.swing.JButton();
+        jBtnExcluir_bbd = new javax.swing.JButton();
+        jBtnConfirmar_bbd = new javax.swing.JButton();
+        jBtnPesquisar_bbd = new javax.swing.JButton();
+        jBtnCancelar_bbd = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jFmtRg = new javax.swing.JFormattedTextField();
+        jFmtRg_bbd = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jFmtTipoContaBancaria = new javax.swing.JTextField();
-        jTxtEmail = new javax.swing.JTextField();
+        jFmtTipoContaBancaria_bbd = new javax.swing.JTextField();
+        jTxtEmail_bbd = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jFmtAgenciaBancaria = new javax.swing.JTextField();
-        jTxtCidade = new javax.swing.JTextField();
-        jTxtEndereco = new javax.swing.JTextField();
+        jFmtAgenciaBancaria_bbd = new javax.swing.JTextField();
+        jTxtCidade_bbd = new javax.swing.JTextField();
+        jTxtEndereco_bbd = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jFmtNumeroContaBancaria = new javax.swing.JTextField();
+        jFmtNumeroContaBancaria_bbd = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTxtCodigoCliente = new javax.swing.JTextField();
-        jTxtCep = new javax.swing.JTextField();
+        jTxtCodigoCliente_bbd = new javax.swing.JTextField();
+        jTxtCep_bbd = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTxtApelido = new javax.swing.JTextField();
-        jTxtComplemento = new javax.swing.JTextField();
+        jTxtApelido_bbd = new javax.swing.JTextField();
+        jTxtComplemento_bbd = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jFmtTelefone = new javax.swing.JFormattedTextField();
+        jFmtTelefone_bbd = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -176,73 +149,55 @@ public class JDlgCliente extends javax.swing.JDialog {
 
         jLabel6.setText("Data de Nascimento");
 
-        jFmtCpf.addActionListener(new java.awt.event.ActionListener() {
+        jBtnIncluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir_1.png"))); // NOI18N
+        jBtnIncluir_bbd.setText("Incluir");
+        jBtnIncluir_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtCpfActionPerformed(evt);
+                jBtnIncluir_bbdActionPerformed(evt);
             }
         });
 
-        jFmtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+        jBtnAlterar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        jBtnAlterar_bbd.setText("Alterar");
+        jBtnAlterar_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtDataNascimentoActionPerformed(evt);
+                jBtnAlterar_bbdActionPerformed(evt);
             }
         });
 
-        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir_1.png"))); // NOI18N
-        jBtnIncluir.setText("Incluir");
-        jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
+        jBtnExcluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
+        jBtnExcluir_bbd.setText("Excluir");
+        jBtnExcluir_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIncluirActionPerformed(evt);
+                jBtnExcluir_bbdActionPerformed(evt);
             }
         });
 
-        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
-        jBtnAlterar.setText("Alterar");
-        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnConfirmar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gravar.png"))); // NOI18N
+        jBtnConfirmar_bbd.setText("Confirmar");
+        jBtnConfirmar_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAlterarActionPerformed(evt);
+                jBtnConfirmar_bbdActionPerformed(evt);
             }
         });
 
-        jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
-        jBtnExcluir.setText("Excluir");
-        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        jBtnPesquisar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
+        jBtnPesquisar_bbd.setText("Pesquisar");
+        jBtnPesquisar_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnExcluirActionPerformed(evt);
+                jBtnPesquisar_bbdActionPerformed(evt);
             }
         });
 
-        jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gravar.png"))); // NOI18N
-        jBtnConfirmar.setText("Confirmar");
-        jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCancelar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
+        jBtnCancelar_bbd.setText("Cancelar");
+        jBtnCancelar_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnConfirmarActionPerformed(evt);
-            }
-        });
-
-        jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
-        jBtnPesquisar.setText("Pesquisar");
-        jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnPesquisarActionPerformed(evt);
-            }
-        });
-
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
-        jBtnCancelar.setText("Cancelar");
-        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCancelarActionPerformed(evt);
+                jBtnCancelar_bbdActionPerformed(evt);
             }
         });
 
         jLabel9.setText("RG");
-
-        jFmtRg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtRgActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Email");
 
@@ -254,9 +209,9 @@ public class JDlgCliente extends javax.swing.JDialog {
 
         jLabel15.setText("Cidade");
 
-        jFmtAgenciaBancaria.addActionListener(new java.awt.event.ActionListener() {
+        jFmtAgenciaBancaria_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtAgenciaBancariaActionPerformed(evt);
+                jFmtAgenciaBancaria_bbdActionPerformed(evt);
             }
         });
 
@@ -283,36 +238,36 @@ public class JDlgCliente extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTxtCodigoCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTxtCodigoCliente_bbd, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(352, 352, 352)
                                 .addComponent(jLabel7))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jFmtAgenciaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFmtAgenciaBancaria_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jFmtNumeroContaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jFmtNumeroContaBancaria_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFmtCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                    .addComponent(jTxtNome_bbd, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFmtCpf_bbd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTxtApelido_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(17, 17, 17)
-                                        .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jFmtRg_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
-                                            .addComponent(jFmtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(jFmtDataNascimento_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(480, 480, 480)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel16)
-                                    .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jTxtComplemento_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
@@ -322,23 +277,23 @@ public class JDlgCliente extends javax.swing.JDialog {
                             .addComponent(jLabel9)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtEmail_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jFmtTelefone_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtnIncluir)
+                        .addComponent(jBtnIncluir_bbd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnAlterar)
+                        .addComponent(jBtnAlterar_bbd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnExcluir)
+                        .addComponent(jBtnExcluir_bbd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnConfirmar)
+                        .addComponent(jBtnConfirmar_bbd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnCancelar)
+                        .addComponent(jBtnCancelar_bbd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnPesquisar))
+                        .addComponent(jBtnPesquisar_bbd))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel19)
@@ -348,19 +303,19 @@ public class JDlgCliente extends javax.swing.JDialog {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFmtTipoContaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFmtTipoContaBancaria_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
-                            .addComponent(jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTxtEndereco_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTxtCidade_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTxtCep_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel15))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -369,15 +324,15 @@ public class JDlgCliente extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtCodigoCliente_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtNome_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtApelido_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -385,18 +340,18 @@ public class JDlgCliente extends javax.swing.JDialog {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFmtCpf_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtRg_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtDataNascimento_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addComponent(jTxtEmail_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtTelefone_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel15)
@@ -404,11 +359,11 @@ public class JDlgCliente extends javax.swing.JDialog {
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                    .addComponent(jTxtComplemento_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtCep_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtCidade_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtEndereco_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -417,76 +372,76 @@ public class JDlgCliente extends javax.swing.JDialog {
                         .addComponent(jLabel19)))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFmtAgenciaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtNumeroContaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtTipoContaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(jFmtAgenciaBancaria_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtNumeroContaBancaria_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtTipoContaBancaria_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnIncluir)
-                    .addComponent(jBtnAlterar)
-                    .addComponent(jBtnExcluir)
-                    .addComponent(jBtnConfirmar)
-                    .addComponent(jBtnCancelar)
-                    .addComponent(jBtnPesquisar))
+                    .addComponent(jBtnIncluir_bbd)
+                    .addComponent(jBtnAlterar_bbd)
+                    .addComponent(jBtnExcluir_bbd)
+                    .addComponent(jBtnConfirmar_bbd)
+                    .addComponent(jBtnCancelar_bbd)
+                    .addComponent(jBtnPesquisar_bbd))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFmtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtCpfActionPerformed
-
-    private void jFmtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtDataNascimentoActionPerformed
-
     //BOTOES
 
-    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+    private void jBtnAlterar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_bbdActionPerformed
         // TODO add your handling code here:
-
-        habilitar();
+        habilitar(true);
+        jTxtCodigoCliente_bbd.setEnabled(false);
         incluindo = false;
-    }//GEN-LAST:event_jBtnAlterarActionPerformed
+    }//GEN-LAST:event_jBtnAlterar_bbdActionPerformed
 
-    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+    private void jBtnExcluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_bbdActionPerformed
         // TODO add your handling code here:
+        if(Util.perguntar("Quer excluir?")){
+            Util.mensagem("Excluido com sucesso");
+        }else{
+            Util.mensagem("Exclusão cancelada");
+        };
 
-    }//GEN-LAST:event_jBtnExcluirActionPerformed
+    }//GEN-LAST:event_jBtnExcluir_bbdActionPerformed
 
-    private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+    private void jBtnConfirmar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_bbdActionPerformed
+          if(Util.perguntar("Confirmar?")){
+            Util.mensagem("Sucesso");
+              habilitar(false);
+        }else{
+              Util.mensagem("Cancelado");
+          };
+        
+    }//GEN-LAST:event_jBtnConfirmar_bbdActionPerformed
 
-    }//GEN-LAST:event_jBtnConfirmarActionPerformed
-
-    private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-
+    private void jBtnPesquisar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisar_bbdActionPerformed
+        
         JDlgClientePesquisar jDlgClientePesquisar = new JDlgClientePesquisar(null, true);
+        jDlgClientePesquisar.setTelaAnterior(this);
         jDlgClientePesquisar.setVisible(true);
-    }//GEN-LAST:event_jBtnPesquisarActionPerformed
+    }//GEN-LAST:event_jBtnPesquisar_bbdActionPerformed
 
-    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+    private void jBtnCancelar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_bbdActionPerformed
         // TODO add your handling code here:
-        desabilitar();
+        habilitar(false);
         limparCampo();
-        JOptionPane.showMessageDialog(null, "Operação Cancelada");
-    }//GEN-LAST:event_jBtnCancelarActionPerformed
+        Util.mensagem("Cancelado");
+    }//GEN-LAST:event_jBtnCancelar_bbdActionPerformed
 
-    private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+    private void jBtnIncluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_bbdActionPerformed
         // TODO add your handling code here:
-        habilitar();
+        habilitar(true);
         limparCampo();
         incluindo = true;
-    }//GEN-LAST:event_jBtnIncluirActionPerformed
+    }//GEN-LAST:event_jBtnIncluir_bbdActionPerformed
 
-    private void jFmtRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtRgActionPerformed
+    private void jFmtAgenciaBancaria_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtAgenciaBancaria_bbdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtRgActionPerformed
-
-    private void jFmtAgenciaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtAgenciaBancariaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtAgenciaBancariaActionPerformed
+    }//GEN-LAST:event_jFmtAgenciaBancaria_bbdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -532,19 +487,19 @@ public class JDlgCliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnAlterar;
-    private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnConfirmar;
-    private javax.swing.JButton jBtnExcluir;
-    private javax.swing.JButton jBtnIncluir;
-    private javax.swing.JButton jBtnPesquisar;
-    private javax.swing.JTextField jFmtAgenciaBancaria;
-    private javax.swing.JFormattedTextField jFmtCpf;
-    private javax.swing.JFormattedTextField jFmtDataNascimento;
-    private javax.swing.JTextField jFmtNumeroContaBancaria;
-    private javax.swing.JFormattedTextField jFmtRg;
-    private javax.swing.JFormattedTextField jFmtTelefone;
-    private javax.swing.JTextField jFmtTipoContaBancaria;
+    private javax.swing.JButton jBtnAlterar_bbd;
+    private javax.swing.JButton jBtnCancelar_bbd;
+    private javax.swing.JButton jBtnConfirmar_bbd;
+    private javax.swing.JButton jBtnExcluir_bbd;
+    private javax.swing.JButton jBtnIncluir_bbd;
+    private javax.swing.JButton jBtnPesquisar_bbd;
+    private javax.swing.JTextField jFmtAgenciaBancaria_bbd;
+    private javax.swing.JFormattedTextField jFmtCpf_bbd;
+    private javax.swing.JFormattedTextField jFmtDataNascimento_bbd;
+    private javax.swing.JTextField jFmtNumeroContaBancaria_bbd;
+    private javax.swing.JFormattedTextField jFmtRg_bbd;
+    private javax.swing.JFormattedTextField jFmtTelefone_bbd;
+    private javax.swing.JTextField jFmtTipoContaBancaria_bbd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -561,13 +516,13 @@ public class JDlgCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTxtApelido;
-    private javax.swing.JTextField jTxtCep;
-    private javax.swing.JTextField jTxtCidade;
-    private javax.swing.JTextField jTxtCodigoCliente;
-    private javax.swing.JTextField jTxtComplemento;
-    private javax.swing.JTextField jTxtEmail;
-    private javax.swing.JTextField jTxtEndereco;
-    private javax.swing.JTextField jTxtNome;
+    private javax.swing.JTextField jTxtApelido_bbd;
+    private javax.swing.JTextField jTxtCep_bbd;
+    private javax.swing.JTextField jTxtCidade_bbd;
+    private javax.swing.JTextField jTxtCodigoCliente_bbd;
+    private javax.swing.JTextField jTxtComplemento_bbd;
+    private javax.swing.JTextField jTxtEmail_bbd;
+    private javax.swing.JTextField jTxtEndereco_bbd;
+    private javax.swing.JTextField jTxtNome_bbd;
     // End of variables declaration//GEN-END:variables
 }

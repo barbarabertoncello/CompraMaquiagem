@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "compra_bbd",
-         catalog = "db_barbara_dias"
+        catalog = "db_barbara_dias"
 )
 public class CompraBbd implements java.io.Serializable {
 

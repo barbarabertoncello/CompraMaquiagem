@@ -5,6 +5,8 @@
  */
 package view;
 
+import tools.Util;
+
 /**
  *
  * @author u07329163139
@@ -14,9 +16,16 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgFornecedorPesquisar
      */
+    JDlgFornecedor jDlgFornecedor;
+    
     public JDlgFornecedorPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    
+    public void setTelaAnterior(JDlgFornecedor jDlgFornecedor) {
+        jDlgFornecedor = jDlgFornecedor;
     }
 
     /**
@@ -28,16 +37,12 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JBtnOkay = new javax.swing.JButton();
-        jBtnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jBtnOkay_bbd = new javax.swing.JButton();
+        jBtnCancelar_bbd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        JBtnOkay.setText("jButton1");
-
-        jBtnCancelar.setText("jButton2");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -52,31 +57,66 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jBtnOkay_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ok.png"))); // NOI18N
+        jBtnOkay_bbd.setText("Okay");
+        jBtnOkay_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnOkay_bbdActionPerformed(evt);
+            }
+        });
+
+        jBtnCancelar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
+        jBtnCancelar_bbd.setText("Cancelar");
+        jBtnCancelar_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelar_bbdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JBtnOkay)
+                .addComponent(jBtnOkay_bbd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnCancelar)
-                .addGap(19, 19, 19))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                .addComponent(jBtnCancelar_bbd)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBtnOkay)
-                    .addComponent(jBtnCancelar))
-                .addGap(20, 20, 20))
+                    .addComponent(jBtnOkay_bbd)
+                    .addComponent(jBtnCancelar_bbd))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnOkay_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkay_bbdActionPerformed
+        // TODO add your handling code here:
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel == -1) {
+            Util.mensagem("Selecione uma Linha");
+        } else {
+            Util.mensagem("Linha Selecionada");
+            setVisible(false);
+        };
+
+    }//GEN-LAST:event_jBtnOkay_bbdActionPerformed
+
+    private void jBtnCancelar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_bbdActionPerformed
+        // TODO add your handling code here:
+        Util.mensagem("Cancelado");
+        setVisible(false);
+
+    }//GEN-LAST:event_jBtnCancelar_bbdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,8 +161,8 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBtnOkay;
-    private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnCancelar_bbd;
+    private javax.swing.JButton jBtnOkay_bbd;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

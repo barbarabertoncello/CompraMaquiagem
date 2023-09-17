@@ -5,8 +5,8 @@
  */
 package view;
 
-import java.util.List;
 import controle.ClienteControle;
+import tools.Util;
 
 /**
  *
@@ -26,7 +26,9 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
     }
-
+    public void setTelaAnterior(JDlgCliente jDlgCliente){
+        jDlgCliente=jDlgCliente;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +40,8 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnOkay = new javax.swing.JButton();
-        jBtnCancelar = new javax.swing.JButton();
+        jBtnOkay_bbd = new javax.swing.JButton();
+        jBtnCancelar_bbd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,17 +58,19 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnOkay.setText("Okay");
-        jBtnOkay.addActionListener(new java.awt.event.ActionListener() {
+        jBtnOkay_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ok.png"))); // NOI18N
+        jBtnOkay_bbd.setText("Okay");
+        jBtnOkay_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnOkayActionPerformed(evt);
+                jBtnOkay_bbdActionPerformed(evt);
             }
         });
 
-        jBtnCancelar.setText("Cancelar");
-        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCancelar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
+        jBtnCancelar_bbd.setText("Cancelar");
+        jBtnCancelar_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCancelarActionPerformed(evt);
+                jBtnCancelar_bbdActionPerformed(evt);
             }
         });
 
@@ -77,39 +81,43 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnOkay)
+                .addComponent(jBtnOkay_bbd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnCancelar)
+                .addComponent(jBtnCancelar_bbd)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnOkay)
-                    .addComponent(jBtnCancelar))
+                    .addComponent(jBtnOkay_bbd)
+                    .addComponent(jBtnCancelar_bbd))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
+    private void jBtnOkay_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkay_bbdActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
-
+            Util.mensagem("Selecione uma Linha");
+        }else{
+          Util.mensagem("Linha Selecionada");
+          setVisible(false);
         };
+        
+    }//GEN-LAST:event_jBtnOkay_bbdActionPerformed
 
-        setVisible(false);
-    }//GEN-LAST:event_jBtnOkayActionPerformed
-
-    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+    private void jBtnCancelar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_bbdActionPerformed
         // TODO add your handling code here:
+        Util.mensagem("Cancelado");
         setVisible(false);
-    }//GEN-LAST:event_jBtnCancelarActionPerformed
+        
+    }//GEN-LAST:event_jBtnCancelar_bbdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,8 +162,8 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnOkay;
+    private javax.swing.JButton jBtnCancelar_bbd;
+    private javax.swing.JButton jBtnOkay_bbd;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

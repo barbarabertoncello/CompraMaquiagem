@@ -19,9 +19,9 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         setTitle("Sistema de compra");
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-         JDlgLogin jDlgLogin = new JDlgLogin(this, true);
-       jDlgLogin.setVisible(true);
-     
+     //   JDlgLogin jDlgLogin = new JDlgLogin(this, true);
+       // jDlgLogin.setVisible(true);
+
     }
 
     /**
@@ -160,9 +160,9 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMnuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuUsuariosActionPerformed
         // TODO add your handling code here:
-        JDlgUsuario  JDlgUsuario  = new JDlgUsuario(this, true);
+        JDlgUsuario JDlgUsuario = new JDlgUsuario(this, true);
         JDlgUsuario.setVisible(true);
-           
+
     }//GEN-LAST:event_jMnuUsuariosActionPerformed
 
     private void jMnuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuSairActionPerformed
@@ -172,32 +172,32 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMnuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuClientesActionPerformed
         // TODO add your handling code here:
-         JDlgCliente  JDlgCliente  = new JDlgCliente(this, true);
+        JDlgCliente JDlgCliente = new JDlgCliente(this, true);
         JDlgCliente.setVisible(true);
     }//GEN-LAST:event_jMnuClientesActionPerformed
 
     private void jMnuComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuComprasActionPerformed
-     JDlgCompra  JDlgCompra   = new JDlgCompra (this, true);
-        JDlgCompra .setVisible(true);
+        JDlgCompra jDlgCompra = new JDlgCompra(this, true);
+        jDlgCompra.setVisible(true);
     }//GEN-LAST:event_jMnuComprasActionPerformed
 
     private void jMnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuProdutoActionPerformed
         // TODO add your handling code here:
-         JDlgProduto  JDlgProduto   = new JDlgProduto (this, true);
-        JDlgProduto .setVisible(true);
+        JDlgProduto JDlgProduto = new JDlgProduto(this, true);
+        JDlgProduto.setVisible(true);
     }//GEN-LAST:event_jMnuProdutoActionPerformed
 
     private void jMnuCompra_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuCompra_ProdutoActionPerformed
         // TODO add your handling code here:
-              JDlgCompraProduto  JDlgCompraProduto   = new JDlgCompraProduto (this, true);
-        JDlgCompraProduto .setVisible(true);
+        JDlgCompraProduto JDlgCompraProduto = new JDlgCompraProduto(this, true);
+        JDlgCompraProduto.setVisible(true);
     }//GEN-LAST:event_jMnuCompra_ProdutoActionPerformed
 
     private void jMnuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFornecedorActionPerformed
         // TODO add your handling code here:
-       JDlgFornecedor JDlgFornecedor   = new JDlgFornecedor (this, true);
-        JDlgFornecedor.setVisible(true); 
-        
+        JDlgFornecedor JDlgFornecedor = new JDlgFornecedor(this, true);
+        JDlgFornecedor.setVisible(true);
+
     }//GEN-LAST:event_jMnuFornecedorActionPerformed
 
     /**

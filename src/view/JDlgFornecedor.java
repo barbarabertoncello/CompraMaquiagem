@@ -8,9 +8,9 @@ package view;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import tools.Util;
 
 /**
  *
@@ -26,56 +26,43 @@ public class JDlgFornecedor extends javax.swing.JDialog {
         initComponents();
         setTitle("Fornecedor");
         setLocationRelativeTo(null);
+        habilitar(false);
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
 
         } catch (ParseException ex) {
             Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+        jFmtCpf_bbd.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
 
-        desabilitar();
     }
 
-    public void habilitar() {
-        jFmtRg.setEnabled(true);
-        jFmtCpf.setEnabled(true);
-        jTxtCodigoFornecedor.setEnabled(true);
-        jTxtNome.setEnabled(true);
-        jTxtEmail.setEnabled(true);
-
-        //botoes
-        jBtnCancelar.setEnabled(true);
-        jBtnConfirmar.setEnabled(true);
-        jBtnAlterar.setEnabled(false);
-        jBtnExcluir.setEnabled(false);
-        jBtnIncluir.setEnabled(false);
-        jBtnPesquisar.setEnabled(false);
+    public void habilitar(boolean valor) {
+        Util.habilitar(valor, jFmtRg_bbd,
+                jFmtCpf_bbd,
+                jTxtCodigoFornecedor_bbd,
+                jTxtNome_bbd,
+                jTxtEmail_bbd,
+                //botoes
+                jBtnCancelar_bbd,
+                jBtnConfirmar_bbd);
+        Util.habilitar(!valor,
+                jBtnAlterar_bbd,
+                jBtnExcluir_bbd,
+                jBtnIncluir_bbd,
+                jBtnPesquisar_bbd);
     }
 
-    public void desabilitar() {
-        jFmtRg.setEnabled(false);
-        jFmtCpf.setEnabled(false);
-        jTxtCodigoFornecedor.setEnabled(false);
-        jTxtNome.setEnabled(false);
-        jTxtEmail.setEnabled(false);
+    public void limparCampo() {
 
-        //botoes
-        jBtnConfirmar.setEnabled(false);
-        jBtnCancelar.setEnabled(false);
-        jBtnAlterar.setEnabled(true);
-        jBtnExcluir.setEnabled(true);
-        jBtnIncluir.setEnabled(true);
-        jBtnPesquisar.setEnabled(true);
-    }
-
-    public void LimparCampos() {
-
-        jTxtCodigoFornecedor.setText("");
-        jTxtNome.setText("");
-        jFmtRg.setText("");
-        jFmtCpf.setText("");
-        jTxtEmail.setText("");
+      Util.limparCampos( jFmtRg_bbd,
+                jFmtCpf_bbd,
+                jTxtCodigoFornecedor_bbd,
+                jTxtNome_bbd,
+                jTxtEmail_bbd,
+                //botoes
+                jBtnCancelar_bbd,
+                jBtnConfirmar_bbd);
 
     }
 
@@ -89,35 +76,35 @@ public class JDlgFornecedor extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTxtCodigoFornecedor = new javax.swing.JTextField();
-        jTxtNome = new javax.swing.JTextField();
+        jTxtCodigoFornecedor_bbd = new javax.swing.JTextField();
+        jTxtNome_bbd = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jBtnIncluir = new javax.swing.JButton();
-        jBtnExcluir = new javax.swing.JButton();
-        jBtnAlterar = new javax.swing.JButton();
-        jBtnConfirmar = new javax.swing.JButton();
-        jBtnCancelar = new javax.swing.JButton();
-        jBtnPesquisar = new javax.swing.JButton();
-        jTxtEmail = new javax.swing.JTextField();
+        jBtnPesquisar_bbd = new javax.swing.JButton();
+        jTxtEmail_bbd = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jFmtCpf = new javax.swing.JFormattedTextField();
-        jFmtRg = new javax.swing.JTextField();
+        jFmtCpf_bbd = new javax.swing.JFormattedTextField();
+        jFmtRg_bbd = new javax.swing.JTextField();
+        jBtnIncluir_bbd = new javax.swing.JButton();
+        jBtnAlterar_bbd = new javax.swing.JButton();
+        jBtnExcluir_bbd = new javax.swing.JButton();
+        jBtnConfirmar_bbd = new javax.swing.JButton();
+        jBtnCancelar_bbd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("código do Fornecedor");
 
-        jTxtCodigoFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        jTxtCodigoFornecedor_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtCodigoFornecedorActionPerformed(evt);
+                jTxtCodigoFornecedor_bbdActionPerformed(evt);
             }
         });
 
-        jTxtNome.addActionListener(new java.awt.event.ActionListener() {
+        jTxtNome_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtNomeActionPerformed(evt);
+                jTxtNome_bbdActionPerformed(evt);
             }
         });
 
@@ -127,55 +114,55 @@ public class JDlgFornecedor extends javax.swing.JDialog {
 
         jLabel6.setText("RG");
 
-        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
-        jBtnIncluir.setText("Incluir");
-        jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
+        jBtnPesquisar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
+        jBtnPesquisar_bbd.setText("Pesquisar");
+        jBtnPesquisar_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIncluirActionPerformed(evt);
-            }
-        });
-
-        jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
-        jBtnExcluir.setText("Excluir");
-        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnExcluirActionPerformed(evt);
-            }
-        });
-
-        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
-        jBtnAlterar.setText("Alterar");
-        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAlterarActionPerformed(evt);
-            }
-        });
-
-        jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
-        jBtnConfirmar.setText("Confirmar");
-        jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnConfirmarActionPerformed(evt);
-            }
-        });
-
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
-        jBtnCancelar.setText("Cancelar");
-        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCancelarActionPerformed(evt);
-            }
-        });
-
-        jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
-        jBtnPesquisar.setText("Pesquisar");
-        jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnPesquisarActionPerformed(evt);
+                jBtnPesquisar_bbdActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Email");
+
+        jBtnIncluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir_1.png"))); // NOI18N
+        jBtnIncluir_bbd.setText("Incluir");
+        jBtnIncluir_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIncluir_bbdActionPerformed(evt);
+            }
+        });
+
+        jBtnAlterar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        jBtnAlterar_bbd.setText("Alterar");
+        jBtnAlterar_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterar_bbdActionPerformed(evt);
+            }
+        });
+
+        jBtnExcluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
+        jBtnExcluir_bbd.setText("Excluir");
+        jBtnExcluir_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluir_bbdActionPerformed(evt);
+            }
+        });
+
+        jBtnConfirmar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gravar.png"))); // NOI18N
+        jBtnConfirmar_bbd.setText("Confirmar");
+        jBtnConfirmar_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnConfirmar_bbdActionPerformed(evt);
+            }
+        });
+
+        jBtnCancelar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
+        jBtnCancelar_bbd.setText("Cancelar");
+        jBtnCancelar_bbd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelar_bbdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,32 +176,35 @@ public class JDlgFornecedor extends javax.swing.JDialog {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTxtNome_bbd, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jFmtCpf_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(45, 45, 45)
                                     .addComponent(jLabel6)
                                     .addGap(111, 111, 111)))
-                            .addComponent(jTxtCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCodigoFornecedor_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTxtEmail_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBtnIncluir)
+                                .addGap(176, 176, 176)
+                                .addComponent(jFmtRg_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jBtnIncluir_bbd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBtnAlterar)
+                                .addComponent(jBtnAlterar_bbd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBtnExcluir)))
+                                .addComponent(jBtnExcluir_bbd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnConfirmar_bbd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnCancelar_bbd)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnPesquisar)))
+                        .addComponent(jBtnPesquisar_bbd)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -223,84 +213,93 @@ public class JDlgFornecedor extends javax.swing.JDialog {
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtCodigoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtCodigoFornecedor_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtNome_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFmtCpf_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtRg_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtEmail_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnIncluir)
-                    .addComponent(jBtnExcluir)
-                    .addComponent(jBtnAlterar)
-                    .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnCancelar)
-                    .addComponent(jBtnPesquisar))
+                    .addComponent(jBtnPesquisar_bbd)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBtnIncluir_bbd)
+                        .addComponent(jBtnAlterar_bbd)
+                        .addComponent(jBtnExcluir_bbd)
+                        .addComponent(jBtnConfirmar_bbd)
+                        .addComponent(jBtnCancelar_bbd)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTxtCodigoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoFornecedorActionPerformed
+    private void jTxtCodigoFornecedor_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoFornecedor_bbdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtCodigoFornecedorActionPerformed
+    }//GEN-LAST:event_jTxtCodigoFornecedor_bbdActionPerformed
 
-    private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed
+    private void jTxtNome_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNome_bbdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtNomeActionPerformed
+    }//GEN-LAST:event_jTxtNome_bbdActionPerformed
 
-    //BOTOES EVENTOS
-
-    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+    private void jBtnPesquisar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisar_bbdActionPerformed
         // TODO add your handling code here:
 
+        JDlgFornecedorPesquisar jDlgFornecedorPesquisar=new JDlgFornecedorPesquisar(null, true);
+        jDlgFornecedorPesquisar.setTelaAnterior(this);
+        jDlgFornecedorPesquisar.setVisible(true);
+    }//GEN-LAST:event_jBtnPesquisar_bbdActionPerformed
 
-    }//GEN-LAST:event_jBtnExcluirActionPerformed
-
-    private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+    private void jBtnIncluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_bbdActionPerformed
         // TODO add your handling code here:
-        habilitar();
-        LimparCampos();
+        habilitar(true);
+        limparCampo();
         incluindo = true;
-    }//GEN-LAST:event_jBtnIncluirActionPerformed
+    }//GEN-LAST:event_jBtnIncluir_bbdActionPerformed
 
-    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+    private void jBtnAlterar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_bbdActionPerformed
         // TODO add your handling code here:
-        habilitar();
+        habilitar(true);
+        jTxtCodigoFornecedor_bbd.setEnabled(false);
         incluindo = false;
-    }//GEN-LAST:event_jBtnAlterarActionPerformed
+    }//GEN-LAST:event_jBtnAlterar_bbdActionPerformed
 
-    private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+    private void jBtnExcluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_bbdActionPerformed
         // TODO add your handling code here:
+        if (Util.perguntar("Quer excluir?")) {
+            Util.mensagem("Excluido com sucesso");
+        } else {
+            Util.mensagem("Exclusão cancelada");
+        };
+    }//GEN-LAST:event_jBtnExcluir_bbdActionPerformed
 
-        desabilitar();
-    }//GEN-LAST:event_jBtnConfirmarActionPerformed
+    private void jBtnConfirmar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_bbdActionPerformed
+        if (Util.perguntar("Confirmar?")) {
+            Util.mensagem("Sucesso");
+            habilitar(false);
+        } else {
+            Util.mensagem("Cancelado");
+        };
 
-    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+    }//GEN-LAST:event_jBtnConfirmar_bbdActionPerformed
+
+    private void jBtnCancelar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_bbdActionPerformed
         // TODO add your handling code here:
-        desabilitar();
-        LimparCampos();
-        JOptionPane.showMessageDialog(null, "Operação Cancelada");
-    }//GEN-LAST:event_jBtnCancelarActionPerformed
-
-    private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jBtnPesquisarActionPerformed
+        habilitar(false);
+        limparCampo();
+        Util.mensagem("Cancelado");
+    }//GEN-LAST:event_jBtnCancelar_bbdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,21 +345,21 @@ public class JDlgFornecedor extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnAlterar;
-    private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnConfirmar;
-    private javax.swing.JButton jBtnExcluir;
-    private javax.swing.JButton jBtnIncluir;
-    private javax.swing.JButton jBtnPesquisar;
-    private javax.swing.JFormattedTextField jFmtCpf;
-    private javax.swing.JTextField jFmtRg;
+    private javax.swing.JButton jBtnAlterar_bbd;
+    private javax.swing.JButton jBtnCancelar_bbd;
+    private javax.swing.JButton jBtnConfirmar_bbd;
+    private javax.swing.JButton jBtnExcluir_bbd;
+    private javax.swing.JButton jBtnIncluir_bbd;
+    private javax.swing.JButton jBtnPesquisar_bbd;
+    private javax.swing.JFormattedTextField jFmtCpf_bbd;
+    private javax.swing.JTextField jFmtRg_bbd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTxtCodigoFornecedor;
-    private javax.swing.JTextField jTxtEmail;
-    private javax.swing.JTextField jTxtNome;
+    private javax.swing.JTextField jTxtCodigoFornecedor_bbd;
+    private javax.swing.JTextField jTxtEmail_bbd;
+    private javax.swing.JTextField jTxtNome_bbd;
     // End of variables declaration//GEN-END:variables
 }
