@@ -5,6 +5,8 @@
  */
 package view;
 
+import bean.FornecedorBbd;
+import dao.FornecedorDao_bbd;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +22,8 @@ public class JDlgFornecedor extends javax.swing.JDialog {
 
     Boolean incluindo;
     MaskFormatter mascaraCpf;
+    FornecedorBbd fornecedorBbd;
+    FornecedorDao_bbd fornecedorDao_bbd;
 
     public JDlgFornecedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -27,6 +31,8 @@ public class JDlgFornecedor extends javax.swing.JDialog {
         setTitle("Fornecedor");
         setLocationRelativeTo(null);
         habilitar(false);
+        fornecedorBbd = new FornecedorBbd();
+        fornecedorDao_bbd = new FornecedorDao_bbd();
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
 
@@ -55,7 +61,7 @@ public class JDlgFornecedor extends javax.swing.JDialog {
 
     public void limparCampo() {
 
-      Util.limparCampos( jFmtRg_bbd,
+        Util.limparCampos(jFmtRg_bbd,
                 jFmtCpf_bbd,
                 jTxtCodigoFornecedor_bbd,
                 jTxtNome_bbd,
@@ -63,6 +69,30 @@ public class JDlgFornecedor extends javax.swing.JDialog {
                 //botoes
                 jBtnCancelar_bbd,
                 jBtnConfirmar_bbd);
+
+    }
+
+    public FornecedorBbd viewBean() {
+        fornecedorBbd = new FornecedorBbd();
+        int id = Integer.valueOf(jTxtCodigoFornecedor_bbd.getText());
+        fornecedorBbd.setIdfornecedorBbd(id);
+        fornecedorBbd.setNomeBbd(jTxtNome_bbd.getText());
+
+        fornecedorBbd.setCpfBbd(jFmtCpf_bbd.getText());
+        fornecedorBbd.setRgBbd(jFmtRg_bbd.getText());
+        fornecedorBbd.setEnderecoBbd(jTxtEmail_bbd.getText());
+
+        return fornecedorBbd;
+
+    }
+
+    public void beanView(FornecedorBbd fornecedor) {
+        String cad = String.valueOf(fornecedor.getIdfornecedorBbd());
+        jTxtCodigoFornecedor_bbd.setText(cad);
+        jTxtNome_bbd.setText(fornecedor.getNomeBbd());
+        jFmtCpf_bbd.setText(fornecedor.getCpfBbd());
+        jFmtRg_bbd.setText(fornecedor.getRgBbd());
+        jTxtEmail_bbd.setText(fornecedor.getEnderecoBbd());
 
     }
 
@@ -122,7 +152,7 @@ public class JDlgFornecedor extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setText("Email");
+        jLabel3.setText("Endereço:");
 
         jBtnIncluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir_1.png"))); // NOI18N
         jBtnIncluir_bbd.setText("Incluir");
@@ -231,14 +261,14 @@ public class JDlgFornecedor extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTxtEmail_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnPesquisar_bbd)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnIncluir_bbd)
                         .addComponent(jBtnAlterar_bbd)
                         .addComponent(jBtnExcluir_bbd)
                         .addComponent(jBtnConfirmar_bbd)
-                        .addComponent(jBtnCancelar_bbd)))
+                        .addComponent(jBtnCancelar_bbd))
+                    .addComponent(jBtnPesquisar_bbd))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -255,8 +285,8 @@ public class JDlgFornecedor extends javax.swing.JDialog {
 
     private void jBtnPesquisar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisar_bbdActionPerformed
         // TODO add your handling code here:
-
-        JDlgFornecedorPesquisar jDlgFornecedorPesquisar=new JDlgFornecedorPesquisar(null, true);
+        fornecedorBbd=new FornecedorBbd();
+        JDlgFornecedorPesquisar jDlgFornecedorPesquisar = new JDlgFornecedorPesquisar(null, true);
         jDlgFornecedorPesquisar.setTelaAnterior(this);
         jDlgFornecedorPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisar_bbdActionPerformed
@@ -278,6 +308,8 @@ public class JDlgFornecedor extends javax.swing.JDialog {
     private void jBtnExcluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_bbdActionPerformed
         // TODO add your handling code here:
         if (Util.perguntar("Quer excluir?")) {
+            fornecedorBbd=viewBean();
+            fornecedorDao_bbd.delete(fornecedorBbd);
             Util.mensagem("Excluido com sucesso");
         } else {
             Util.mensagem("Exclusão cancelada");
@@ -285,13 +317,23 @@ public class JDlgFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluir_bbdActionPerformed
 
     private void jBtnConfirmar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_bbdActionPerformed
-        if (Util.perguntar("Confirmar?")) {
+        if (Util.perguntar("Confirmar?") && incluindo==true) {
+            fornecedorBbd=viewBean();
+            fornecedorDao_bbd.insert(fornecedorBbd);
             Util.mensagem("Sucesso");
             habilitar(false);
-        } else {
+            limparCampo();
+            fornecedorBbd=null;
+        } else if(Util.perguntar("Confirmar?") && incluindo==false){
+            fornecedorBbd=viewBean();
+            fornecedorDao_bbd.update(fornecedorBbd);
+            Util.mensagem("Alterado");
+            limparCampo();
+            fornecedorBbd=null;
+        }else{
             Util.mensagem("Cancelado");
         };
-
+        
     }//GEN-LAST:event_jBtnConfirmar_bbdActionPerformed
 
     private void jBtnCancelar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_bbdActionPerformed

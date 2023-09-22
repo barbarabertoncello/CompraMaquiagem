@@ -5,6 +5,9 @@
  */
 package view;
 
+import controle.FornecedorControle;
+import dao.FornecedorDao_bbd;
+import java.util.List;
 import tools.Util;
 
 /**
@@ -16,14 +19,21 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgFornecedorPesquisar
      */
+    FornecedorControle fornecedorControle;
+    FornecedorDao_bbd fornecedorDao_bbd;
     JDlgFornecedor jDlgFornecedor;
-    
+
     public JDlgFornecedorPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        fornecedorControle = new FornecedorControle();
+        fornecedorDao_bbd = new FornecedorDao_bbd();
+        List lista = fornecedorDao_bbd.listAll();
+        fornecedorControle.setList(lista);
+        jTable1.setModel(fornecedorControle);
     }
-    
+
     public void setTelaAnterior(JDlgFornecedor jDlgFornecedor) {
         jDlgFornecedor = jDlgFornecedor;
     }
@@ -105,6 +115,7 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
         if (rowSel == -1) {
             Util.mensagem("Selecione uma Linha");
         } else {
+            jDlgFornecedor.beanView(fornecedorControle.getBean(rowSel));
             Util.mensagem("Linha Selecionada");
             setVisible(false);
         };
@@ -115,7 +126,6 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
         // TODO add your handling code here:
         Util.mensagem("Cancelado");
         setVisible(false);
-
     }//GEN-LAST:event_jBtnCancelar_bbdActionPerformed
 
     /**

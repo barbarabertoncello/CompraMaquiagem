@@ -6,9 +6,13 @@
 package tools;
 
 import java.util.Date;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -24,7 +28,27 @@ public class Util {
 
     public static void limparCampos(JComponent... vetComp) {
         for (int i = 0; i < vetComp.length; i++) {
-            ((JTextField) vetComp[i]).setText("");
+
+            if (vetComp[i] instanceof JTextField) {
+                JTextField comp = (JTextField) vetComp[i];
+                comp.setText("");
+            }
+            if (vetComp[i] instanceof JComboBox) {
+                JComboBox comp = (JComboBox) vetComp[i];
+                comp.setSelectedIndex(-1);
+            }
+            if (vetComp[i] instanceof JCheckBox) {
+                JCheckBox comp = (JCheckBox) vetComp[i];
+                comp.setSelected(false);
+            }
+            if (vetComp[i] instanceof JPasswordField) {
+                JPasswordField comp = (JPasswordField) vetComp[i];
+                comp.setText("");
+            }
+            if (vetComp[i] instanceof JTextPane) {
+                JTextPane comp = (JTextPane) vetComp[i];
+                comp.setText("");
+            }
         }
     }
 

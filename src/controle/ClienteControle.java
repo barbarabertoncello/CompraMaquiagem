@@ -14,18 +14,20 @@ import javax.swing.table.AbstractTableModel;
  * @author PC
  */
 public class ClienteControle extends AbstractTableModel {
-  private  List lista;
-   
-   public void setList(List lista) {
-     this.lista = lista;
-   }
-   public ClienteBbd getBean(int linha) {
+
+    private List lista;
+
+    public void setList(List lista) {
+        this.lista = lista;
+    }
+
+    public ClienteBbd getBean(int linha) {
         return (ClienteBbd) lista.get(linha);
     }
-   
+
     @Override
     public int getRowCount() {
-       
+
         return lista.size();
     }
 
@@ -36,37 +38,37 @@ public class ClienteControle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ClienteBbd ClienteBbd =(ClienteBbd) lista.get(rowIndex);
-        if(columnIndex == 0) {
+        ClienteBbd ClienteBbd = (ClienteBbd) lista.get(rowIndex);
+        if (columnIndex == 0) {
             return ClienteBbd.getIdclienteBbd();
         }
-        if(columnIndex == 1) {
+        if (columnIndex == 1) {
             return ClienteBbd.getNomeBbd();
         }
-        if(columnIndex == 2) {
+        if (columnIndex == 2) {
             return ClienteBbd.getTelefoneBbd();
         }
-        if(columnIndex == 3) {
+        if (columnIndex == 3) {
             return ClienteBbd.getEndereco();
         }
         return "";
     }
+
     @Override
-    public String getColumnName(int columnIndex){
-        if(columnIndex == 0) {
+    public String getColumnName(int columnIndex) {
+        if (columnIndex == 0) {
             return "ID";
         }
-        if(columnIndex == 1) {
+        if (columnIndex == 1) {
             return "NOME";
         }
-        if(columnIndex == 2) {
+        if (columnIndex == 2) {
             return "Telefone";
         }
-        if(columnIndex == 3) {
+        if (columnIndex == 3) {
             return "Endereço";
         }
         return "";
     }
-    
-    
+
 }

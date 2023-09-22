@@ -5,6 +5,7 @@
  */
 package JDlgProdutoNovo;
 
+import dao.ProdutoDao_bbd;
 import view.*;
 import javax.swing.JOptionPane;
 import tools.Util;
@@ -17,7 +18,9 @@ import tools.Util;
 public class JDlgProdutoNovo extends javax.swing.JDialog {
     
     Boolean incluindo;
-
+    ProdutoDao_bbd produtoDao_bbd;
+    ProdutoDao_bbd produtoDao_bbd1;
+    
     /**
      * Creates new form JDlgUsuario
      */

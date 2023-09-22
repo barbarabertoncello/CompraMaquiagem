@@ -100,15 +100,15 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jTxtEmail_bbd" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBtnPesquisar_bbd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jBtnIncluir_bbd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBtnAlterar_bbd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBtnExcluir_bbd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBtnConfirmar_bbd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBtnCancelar_bbd" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jBtnPesquisar_bbd" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
@@ -161,7 +161,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Email"/>
+        <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFmtCpf_bbd">

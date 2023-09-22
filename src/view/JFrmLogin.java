@@ -5,6 +5,8 @@
  */
 package view;
 
+import bean.UsuarioBbd;
+import dao.UsuarioDao_bbd;
 import tools.Util;
 
 /**
@@ -120,6 +122,9 @@ public class JFrmLogin extends javax.swing.JFrame {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
 
+        UsuarioDao_bbd usuarioDao_bbd = new UsuarioDao_bbd();
+        UsuarioBbd usuarioBbd = new UsuarioBbd();
+        usuarioBbd = usuarioDao_bbd.Logar(jTxtUsuario.getText(), jPwfSenha.getText());
         /// SENHA E USUARIO PARA O ACESSO
         if (jPwfSenha.getText().equals("senha123") && !jTxtUsuario.getText().equals("ledesma")
                 || (jPwfSenha.getText().equals("senha123") && !jTxtUsuario.getText().equals("livros"))) {
@@ -128,6 +133,11 @@ public class JFrmLogin extends javax.swing.JFrame {
             this.dispose();//mesma coisa do setvisible
             Util.mensagem("Dados corretos");
 
+        } else if (usuarioBbd.getApelidoBbd().equals(jTxtUsuario.getText()) && usuarioBbd.getSenhaBbd().equals(jPwfSenha.getText())) {
+            JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+            jFrmPrincipal.setVisible(true);
+            this.dispose();//mesma coisa do setvisible
+            Util.mensagem("Dados corretos");
         } else {
             Util.mensagem("Dados incorretos");
         }
