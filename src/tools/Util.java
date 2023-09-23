@@ -61,7 +61,7 @@ public class Util {
     }
 
     public static int strInt(String cad) {
-        return 0;
+        return Integer.valueOf(cad);
     }
 
     public static String intStr(int num) {

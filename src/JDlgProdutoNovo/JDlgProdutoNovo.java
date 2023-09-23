@@ -5,41 +5,36 @@
  */
 package JDlgProdutoNovo;
 
-import dao.ProdutoDao_bbd;
+import bean.ProdutoBbd;
 import view.*;
-import javax.swing.JOptionPane;
+import dao.ProdutoDao_bbd;
+import java.util.List;
 import tools.Util;
 
 /**
- * /**
  *
- * @author u07392163139
+ * @author u07329163139
  */
 public class JDlgProdutoNovo extends javax.swing.JDialog {
-    
-    Boolean incluindo;
-    ProdutoDao_bbd produtoDao_bbd;
-    ProdutoDao_bbd produtoDao_bbd1;
-    
+
     /**
-     * Creates new form JDlgUsuario
+     * Creates new form JDlgProdutoNovoIA
      */
+    private JDlgProdutoIA JDlgProduto;
+    ProdutoControle produtoControle;
+    ProdutoBbd produtoBbd;
+    ProdutoDao_bbd produtoDao_bbd;
+
     public JDlgProdutoNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Produto");
         setLocationRelativeTo(null);
-       
-    }
-    
-    public void limparCampo() {
-        Util.limparCampos(jTxtCodigoProduto_bbd,
-                jTxtNome_bbd,
-                jTxtQuantidade_bbd,
-                jTxtDescricao_bbd,
-                jTxtGenero_bbd,
-                jTxtPreco_bbd);
-        
+        produtoBbd = new ProdutoBbd();
+        produtoDao_bbd = new ProdutoDao_bbd();
+        produtoControle = new ProdutoControle();
+        List lista = produtoDao_bbd.listAll();
+        produtoControle.setList(lista);
+        jTable1.setModel(produtoControle);
     }
 
     /**
@@ -51,49 +46,48 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jTxtNome_bbd = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTxtDescricao_bbd = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTxtPreco_bbd = new javax.swing.JFormattedTextField();
-        jTxtGenero_bbd = new javax.swing.JFormattedTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTxtCodigoProduto_bbd = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTxtQuantidade_bbd = new javax.swing.JTextField();
-        jBtnConfirmar_bbd = new javax.swing.JButton();
-        jBtnCancelar_bbd = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jBtnIncluir_bbd = new javax.swing.JButton();
+        jBtnExcluir_bbd = new javax.swing.JButton();
+        jBtnAlterar_bbd1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setText("Nome");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        jLabel3.setText("Descrição");
-
-        jLabel11.setText("Preço");
-
-        jLabel14.setText("Gênero");
-
-        jLabel1.setText("Código do Produto");
-
-        jLabel4.setText("quantidade");
-
-        jBtnConfirmar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gravar.png"))); // NOI18N
-        jBtnConfirmar_bbd.setText("Confirmar");
-        jBtnConfirmar_bbd.addActionListener(new java.awt.event.ActionListener() {
+        jBtnIncluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ok.png"))); // NOI18N
+        jBtnIncluir_bbd.setText("Incluir");
+        jBtnIncluir_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnConfirmar_bbdActionPerformed(evt);
+                jBtnIncluir_bbdActionPerformed(evt);
             }
         });
 
-        jBtnCancelar_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
-        jBtnCancelar_bbd.setText("Cancelar");
-        jBtnCancelar_bbd.addActionListener(new java.awt.event.ActionListener() {
+        jBtnExcluir_bbd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
+        jBtnExcluir_bbd.setText("Excluir");
+        jBtnExcluir_bbd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCancelar_bbdActionPerformed(evt);
+                jBtnExcluir_bbdActionPerformed(evt);
+            }
+        });
+
+        jBtnAlterar_bbd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        jBtnAlterar_bbd1.setText("Alterar");
+        jBtnAlterar_bbd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterar_bbd1ActionPerformed(evt);
             }
         });
 
@@ -103,93 +97,66 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(614, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(276, 276, 276))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTxtCodigoProduto_bbd, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTxtNome_bbd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTxtGenero_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTxtPreco_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel11))
-                                    .addGap(151, 151, 151)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTxtDescricao_bbd)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jTxtQuantidade_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(291, 291, 291)
-                                .addComponent(jBtnConfirmar_bbd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBtnCancelar_bbd)))
-                        .addGap(0, 31, Short.MAX_VALUE))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jBtnIncluir_bbd)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnAlterar_bbd1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jBtnExcluir_bbd)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(1, 1, 1)
-                .addComponent(jTxtCodigoProduto_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtNome_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtGenero_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtDescricao_bbd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtPreco_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtQuantidade_bbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnConfirmar_bbd)
-                    .addComponent(jBtnCancelar_bbd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5))
+                    .addComponent(jBtnIncluir_bbd)
+                    .addComponent(jBtnExcluir_bbd)
+                    .addComponent(jBtnAlterar_bbd1))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnConfirmar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_bbdActionPerformed
-        if (Util.perguntar("Confirmar?")) {
-            Util.mensagem("Sucesso");
-          } else {
-            Util.mensagem("Cancelado");
-        };
-    }//GEN-LAST:event_jBtnConfirmar_bbdActionPerformed
-
-    private void jBtnCancelar_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_bbdActionPerformed
+    private void jBtnIncluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_bbdActionPerformed
         // TODO add your handling code here:
-       
-        limparCampo();
-        Util.mensagem("Cancelado");
-    }//GEN-LAST:event_jBtnCancelar_bbdActionPerformed
+        JDlgProduto = new JDlgProdutoIA(null, true);
+        JDlgProduto.setTelaAnterio(this);
+        JDlgProduto.setTitle("Incluindo");
+        JDlgProduto.setVisible(true);
+    }//GEN-LAST:event_jBtnIncluir_bbdActionPerformed
+
+    private void jBtnExcluir_bbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_bbdActionPerformed
+        // TODO add your handling code here:
+        if (jTable1.getSelectedRow() == -1) {
+            Util.mensagem("Selecione uma linha");
+        } else {
+            produtoBbd = produtoControle.getBean(jTable1.getSelectedRow());
+            produtoDao_bbd.delete(produtoBbd);
+        }
+    }//GEN-LAST:event_jBtnExcluir_bbdActionPerformed
+
+    private void jBtnAlterar_bbd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_bbd1ActionPerformed
+        // TODO add your handling code here:
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel == -1) {
+            Util.mensagem("Selecione uma Linha");
+        } else {
+            JDlgProduto = new JDlgProdutoIA(null, true);
+            JDlgProduto.setTelaAnterio(this);
+            JDlgProduto.setTitle("Alterar");
+            produtoBbd = new ProdutoBbd();
+            produtoBbd = produtoControle.getBean(jTable1.getSelectedRow());
+            JDlgProduto.beanView(produtoBbd);
+            JDlgProduto.setVisible(true);
+        };
+    }//GEN-LAST:event_jBtnAlterar_bbd1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,22 +199,6 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -265,20 +216,10 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnCancelar_bbd;
-    private javax.swing.JButton jBtnConfirmar_bbd;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTxtCodigoProduto_bbd;
-    private javax.swing.JTextField jTxtDescricao_bbd;
-    private javax.swing.JFormattedTextField jTxtGenero_bbd;
-    private javax.swing.JTextField jTxtNome_bbd;
-    private javax.swing.JFormattedTextField jTxtPreco_bbd;
-    private javax.swing.JTextField jTxtQuantidade_bbd;
+    private javax.swing.JButton jBtnAlterar_bbd1;
+    private javax.swing.JButton jBtnExcluir_bbd;
+    private javax.swing.JButton jBtnIncluir_bbd;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
